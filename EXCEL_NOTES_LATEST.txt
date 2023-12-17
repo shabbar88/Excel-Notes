@@ -1,0 +1,711 @@
+  before 2007 version limitation was 256 cols n 65536 rows  >>>>> file extension was .xls
+  2007 n above version limitation is 1048576 rows n 16384 cols   >>> file extension .xlsx
+  .xlsm (macro enabled workbook)
+.xlsb (binary)
+,csv(comma seperated value file)
+
+fill handler + click on here for auto fill
+
+upper,lower,proper,len,left,right,mid
+concat, &, Concatenate does the same thing.
+exact() is a case sensitive to check equality of 2 strings, = operator for checking content irrespective of case
+find() is case sensitive, it takes 3 params, 2 is mandatory one is optional....left to right it acts.
+search() is case insensitive
+replace() and substitute() does the same thing but substitute is case sensitive.
+trim() just keeps one space between the words n remove all the spaces.
+
+clean() removes all non printable charecters from tbe text.
+
+transpose is used for transposing data
+paste link is used to reflect the changes in the pasted data with original.
+paste special + skip blank will copy data containing cell only.
+ctrl + r to copy the content on many column on right hand side.
+-----------------------------------------------------------------------------------------
+count,counta,countblank, sumif, avergaeif, max,min,large,small,
+
+countifs,sumifs,averageifs, maxifs,minifs
+round,roundup,rounddown,int,power,^,roman,arabic,rept,abs
+-------------------------------------------------------------------------------------------------------------------------
+fn key + F4 in selected cell for referencing... relative,absolute and mixed referencing..
+---------------------------------------------------------------------------------
+for date ctrl+;    , for time ctrl+shift +:  , now() gives datetime and today gives date
+now() - today() and then converts it to date format to get time
+shortcuts are static where as functions are dynamic....
+
+throgh time we can extract hour,minute,second though hour(),minute(),second() function
+we can time throgh hour minute and second  =time(hour,minute,second)
+
+we can get weekday by using weekday(date, pass the arg depending on choice 0 to 6)
+similarly we can get weeknum = week(date, returning integer..... same as above)
+
+=TEXT(E16,"MMMM")  WE CAN EXTRACT MONTH NAME BY THIS WAY
+=TEXT(E16,"DDDD") WE CAN EXTRACT DAY NAME BY THIS WAY
+=TEXT(E16,"MMm") we can extract month nam in this format  .like..    Aug
+
+CODE TO CALCULATE COMPLETE DATEDIF IN TERMS OF YEAR , MONTH AND DAY
+=CONCAT(DATEDIF(C35,D35,"Y")," Years ",DATEDIF(C35,D35,"YM"), " Months ",DATEDIF(C35,D35,"MD")," Days")
+
+Y,YM,MD..... THIS IS THE HIERARCHY TO CALCULATE DATEDIF.....
+networkdays
+networkdays.intl   >> both are used for calculating workings days between dates
+=NETWORKDAYS(B40,B41,Holidays)		
+=NETWORKDAYS.INTL(B40,B41,11,Holidays)
+
+company has taken project on 01/01/2023 , it takes 350 days to complete the project .. When project will be completed					
+date	01-01-2023				
+days_to_com	350				
+completion date	13-05-2024	=WORKDAY(B52,B53,Holidays)			
+completion date	21-02-2024	=WORKDAY.INTL(B52,B53,11,Holidays)	
+
+=EDATE()
+
+doj	no_of_mon	END DATE	
+01-01-2020	66	01-07-2025	=EDATE(A58,B58)
+05-05-2022	34	05-03-2025	=EDATE(A59,B59)
+10-05-2023	65	10-10-2028	=EDATE(A60,B60)
+
+WE CAN ALSO USE =EOMONTH   TO GET END OF THE MONTH OF PARTICULAR DATE
+-------------------------------------------------------------------------------------------
+FILL SERIES,AUTOFILL
+LINEAR,GROWTH,DATE,AUTOFILL
+down arrow in box is symbol of fill series that placed in corner
+--------------------------------------------------------------------------------------------------------
+ctrl+D DOWNWARD FILLING THE DATA   ... CTRL+R RIGHTSIDE FILLING THE DATA
+
+
+HOW TO MAKE CUSTOM LIST
+MAKE LIST ON EXCEL
+GO TO FILE , THEN OPTIONS, THEN ADAVANCED , THEN IN BOTTOM EDIT CUSTOM LIST
+ALT + F FOR FILL SERIES
+
+-------------------------------------------------------------------------
+ISTEXT(), ISNONTEXT(), ISEVEN(),ISODD(),ISLOGICAL(),ISNUMBER(), ISNONTEXT() 
+  >> ALL THESE RETURNS TRUE OR FALSE
+-----------------------------------------------------------------
+HOW TO SPLIT THE WORDS INTO DIFFERENT COLUMNS BASED ON DELIMETER
+SELECT THE DATA , GO TO DATA TAB, TEXT TO COLUMNS, GIVE DELIMETER AS PER REQUIRED .
+THEN CHANG THE COLUMN TYPE AS PER REQUIREMENT.
+
+
+
+WE CAN SPLIT USING FIXED WIDTH AS WIDTH AS WELL IF NUMBER OF CHARACTERS R SAME IN COLUMN.
+----------------------------------------------------------------------------------------------------------------
+
+flashfill
+ctrl + E is shortcut for flashfill
+
+ctrl+H   >> FIND N REPLACE..
+----------------------------------------------------------------------------------------------------------------
+LOGICAL FUNCTIONS IN EXCEL
+IF, AND ,OR, NOT, NETSTEDIF IE IIF
+
+=IF(H3="Marketing",5000,0)   ...if(logical_test, if_true, if,false)
+=IF(AND(H3="R&D",G3="S"),40%*I3,0)
+=IF(OR(H4 ="Marketing",H4="Accounts"),5000,0)
+
+NESTEDIF
+=IF(I3<=5000,0,IF(I3<=10000,50,IF(I3<=15000,100,IF(I3<=20000,150,200))))
+USING IFS FUNCTION TO ACHIEVE SAME RESULT
+=IFS(I3<=5000,0,I3<=10000,50,I3<=15000,100,I3<=20000,150,I3>20000,200)
+=IF(OR(F3="Mumbai",F3="Delhi",F3="Kolkata",F3="Chennai",F3="Banglore"),5000,0)
+
+WE CAN DO USING NOT AS WELL
+=IF(NOT(OR(F3="Mumbai",F3="Delhi",F3="Kolkata",F3="Chennai",F3="Banglore")),0,5000)
+
+WE CAN DO IN THIS WAY AS WELL
+=IF(OR(F3=$F$3,F3=$F$4,F3=$F$6,F3=$F$10,F3=$F$12),5000,0)
+
+=IF(NOT(H3=$H$12),4000,0)
+
+=IF(OR(AND(H3=$H$3,G3=$G$3),AND(H3=$H$6,G3=$G$6),
+AND(H3=$H$5,G3=$G$4),AND(H3=$H$4,G3=$G$9)),0.3*I3,0)
+
+=IFS(Y3<=150000,0,Y3<=300000,5%*Y3,Y3<=450000,10%*Y3,Y3<=600000,15%*Y3,Y3>600000,20%*Y3)
+
+----------------------------------------------------------------------------------------------------------------------
+
+
+                                                                              🔻
+IF DIRECTION OF SOMETHING IS LIKE WE NEED TO FREE ONLY ROW THAT MEANS FREEZE LIKE THAT A$5
+
+IF DIRECTION OF SOMETHING IS LEFT TO RIGHT THEN WE NEED TO FREEZE ONLY COLUMN THAT IS $A5
+--------------------------------------------------------------------------------------------------------------------
+DATA VALIDATION 
+GO DATA TAB , BLOCK THE CELL, GO TO DATA VALIDATION AND APPLY THE RULES AS PER REQUIRED
+WE CAN CREATE  A LIST AS WELL AS PER OUR REQUIREMENT BY SELECTING LIST AND FEEDING THE DATA.
+
+we can use named range as well for this like sorce we can use =name of the selected data(drop down)
+
+short cut for data validation is alt +A+V
+
+we can give input message for guiding the user that what data to be fed here.
+customised data validation
+
+=AND(LEN(K2)=10,ISNUMBER(K2))
+=OR(E2="W",E2="N",E2="S",E2="E")
+
+=ISTEXT(B2)   F0R PUTTING ALPHBDETS ONLY IN DATA VALIDATION IN CUSTOM OPTION
+-----------------------------------------------------------------------------------------------------------------------------
+CONDITIONAL FORMATTING
+CELL STARTS WITH A END WITH Z , CONTAINING, ETC..
+GO TO NEW RULES >> SECOND OPTION AND DO AS PER REQUIREMENT
+we can format date as per this month,last month, etc.
+
+we can give icon,bar,gray scale for conditional formatting, we can format on the basis of rule as well.
+
+NEW RULE  >> USE A FORMULA TO DETERMINE WHICH CELL TO FORMAT
+
+=WEEKDAY(I3,11)>6
+=WEEKDAY(B5,2)>5
+**** IMPORTANT CONCEPT WHEN 2 DATA SET IS CHANGING LIKE IN STOCK MARKET AND WE NEED TO REP BY ARROWS
+IN ANOTHER COL NEXT TO THAT.
+=IFS(C8>C7,-1,C8<C7,1,C8=C7,0)
+SUPPOSE WE CREATED REGION , THEN BELOW THAT CELL DROP DOWN OF N,S,E,W (Y2 IS CELL NAME)
+IN REGION COLUMN SELECT FIRST CELL (G3)
+SO WE WILL LOCK COLUMN ONLY
+GO TO NEW RULE  AND TYPE IT
+
+=$G3=$Y$2
+THEN DO FORMATTING
+
+=B$2=$R$13  >> IF WE WANT TO REFLECT CHANGES COLUMN WISW ONLY
+---------------------------------------------------------------------------------------------------------------------------------
+=IFS(C8>C7,-1,C8<C7,1,C8=C7,0)
+=IFS(C8>C7,1,C8=C7,0,C8<C7,-1)
+----------------------------------------------------------------------------------------------------------------------------------
+indirect converts normal text to reference
+
+TYPE =INDIRECT(K19) THEN CTRL+SHIFT+ENTER    (BEFORE THAT BLOCK THE CELLL)
+
+-----------------------------------------------------------------------------------------------------------------
+sorting and filter
+go to data tab and use sort option 
+we can do sorting upto 64 levels like region, then city, then salary,etc.
+we can sort the data on the basis of conditional formatting icon, cell color, font color,cell values
+
+we can sort from left to right, for that we need to enable that option( we need to select the whole data first except heading)
+
+------------------------------------------------------------------------------------------------------------------------------------
+custom sort
+suppose our requirement is to sort the data on basis of city, and in that delhi,mumbai,chennai should come first
+.. so we can go for custom sort in that case by just adding delhi , mumbai, chennai to list
+-------------------------------------------------------------------------------------------------------------------------------
+Filtering ctrl+shift+L    IS SHORTCUT
+
+--------------------------------------------------------------------------------------------------------------------------------------
+ADVANCED FILTER
+WE NEED TO PASS THREE PARMETERS RANGE, CRITERIA RANGE AND WHERE TO COPY....
+IF WE NEED TO FILTER IN ANOTHER LOCATION IN SAME SHEET FOR EXAMPLE     DEPARTMENT R&D  WE NEED TO GIVE 
+CELL RANGE FOR THAT... ..
+
+IF U WANT FILTERED DATA IN DIFFDRENT SHEET , FIRST GO THAT SHEET SO THAT SHEET BECOME ACTIVE SHEET
+THEN CLICK ON ADVANCED FILTER THEN GO TABLE RANGE, SELECT CRITERIA RANGE AND THAN COPY DATA TO ACTIVE 
+SHEET.
+
+------------------------------------------------------------------------------------------------------------
+we can remove duplicates as well using advanced filtering....
+go to advanced filtering select that column and unique records and copy at particular location..
+--------------------------------------------------------------------------------------------------------------------------
+lookup 
+=lookup(lookup_value,lookup_vector,result_vector)
+
+XLOOKUP>> EXTENDED LOOKUP
+IT IS SIMILAR TO LOOKUP BUT WE NEED NOT TO ARRANGE LOOKUP VECTOR DATA IN ASCENDING ORDER
+
+IT IS APPLICABLE ONLY IN 2022 AND 365 VERSION.
+=XLOOKUP(LOOKUP_VALUE,LOOKUP_ARRAY,RETURN_ARRAY,[IF NOT FOUND],[SERCH MODE]
+
+[IF NOT FOUND]  >> WE CAN STRING MSG IF NOT FOUND
+[SEARCH MODE] CAN BE 0,-1,1   
+0 MEANS EXACT MATCH, -1 MEANS LOWER SIDE MATCH NEAREST, 1 MEANS UPPER SIDE MATCH NEAREST
+
+
+------------------------------------------------------------------------------------------------------------------
+VLOOKUP
+VLOOKUP LOOKS DATA FROM LEFTMOST COLUMN OF TABLE
+=VLOOKUP(LOOKUP_VALUE,TABLE_ARRAY,COL_INDEX_NUM,0/false,1/True
+0 means exact match, 1 means approx match
+by default excel takes true only.
+
+IF WE GET ERROR IN THIS PROCESS WE WILL WRAP THE CODE WITH IFERROR LIKE THIS
+=IFERROR(VLOOKUP(B4,Data,2,0),"NOT AVAILABLE")
+
+IF N/A ERROR COMES WE CAN WRAP THE CODE WITH IFNA
+=IFNA(VLOOKUP(J13,Data,2,0)," ")
+
+=IFERROR(VLOOKUP(B4,Data,2,0),"NOT AVAILABLE")
+
+
+--------------------------------------------------------------------------------------------------
+match(lookup_value,lookup_array,[match type]
+0 exact match, 1 lesser than , -1 greater than 
+it return the index of element.....
+
+ADAVANCE FORM OF VLOOKUP WHICH IS USED IN REAL TIME
+=IFNA(VLOOKUP($J11,MYDATA,MATCH(K$10,HEAD,0),0),"NOT AVAILABLE")
+
+IN PLACE OF COLUMN INDEX WE PASS MATCH FUNCTION SO THAT IT TAKES COLUMN NO AUTOMATICALLY
+WE WRAP THE CODE WITH IFNA OR IFERROR
+ SO THAT IF ANY ERROR COMES IT GETS REPLACED BY SOME CUSTOMISED VALUE
+------------------------------------------------------------------------------------------------------
+HLOOKUP
+IN HLOOKUP WE LOOK FROM THE TOPM ROW
+=HLOOKUP(C14,$C$2:$V$8,2,0)
+
+-----------------------------------------------------------------------------------------------------------
+advanced vlookup
+vlookup inside vlookup(nested vlookup)
+=VLOOKUP(VLOOKUP(I4,B4:C10,2,0),F4:G10,2,0)
+
+--------------------------------------------------------------------------------------------------------------------------
+complex vlookup
+=IF(ISNUMBER(J12),VLOOKUP(J12,$B$3:$H$22,7,0),VLOOKUP(J12,C12:H31,6,0))
+
+
+------------------------------------------------------------------------------------------------------------
+advanced vlookup when we need to fetch data from reverse
+we use choose function  >> inside choose function inside the curly braces we pass the col number
+virtually, then we give cell reference for that, after that we give index number as per that and then 
+0 and 1 as per exact match or approx match..
+=VLOOKUP(K4,CHOOSE({1,2,3},$I$3:$I$22,$C$3:$C$22,$H$3:$H$22),2,0)
+--------------------------------------------------------------------------------------------------------------------
+we can use concat function in vlookup
+=VLOOKUP(CONCAT(G3," ",H3),A3:D8,4,0)
+----------------------------------------------------------------------------------------------------------------------------
+index
+=index(array,row_number,col_number)
+
+---------------------------------------------------------------------------------------------------
+MOST COMPLEX VLOOKUP
+USING INDEX AND MATCH BOTH......
+✔✔✔✔✔✔
+=INDEX(DATA1,MATCH($K3,_EMP,0),MATCH(L$2,HEAD1,0))
+
+======================================================================
+FREEZING THE PANES >> WE CAN FREE THE PANES GOING TO THE VIEW TAB
+IF WE WANT TO FREEZE 10 ROWS AND WE SHOULD BE IN 11TH ROW AND THEN WE CAN FREEZE.
+=======================================================================
+PASSWORD AND SECURITY
+
+SHEET LEVEL PROTECTION>> GO TO SHEET NAME ICON AND RIGHT CLICK AND PROTECT SHEET USING PASSWORD
+ANOTHER WAY ..GO TO REVIEW TAB AND GIVE PASSWORD TO PROTECT SHEET.
+
+
+IF WE DO NOT WANT TO DATA GET COPIED AND WE NEED TO UNCHECL THE FIRST TWO OPTIONS..
+
+WORKBOOK LEVEL PROTECTION
+FILE>> INFO> PROTECT WORKBOOK STRUCTURE
+
+PARTIAL LEVEL PROTECTION>>>
+SELECT THE LEFT TOP MOST TRIANGLE AND PRESS CTRL+1 AND UNCHECK BOTH THE BOXES
+THEN SELECT DATA TO BE LOCKED AND PRES CTRL + 1 AND LOCK THAT
+THEN GO FILE INFO AND PROTECT CURRENT SHEET AND GIVE PASSWORD AND SAVE
+
+-------------------------------------------------------------------------------------------------------------------------------------
+PROTECTING SHEET ALLOW RANGES
+SUPPOSE U WANT TO ALLOW CERTAIN PORTION TO FEED DATA TO DIFFERENT PERSON 
+SO U WILL LOCK BY ALLLOW RANGES GOING TO VIEW TAB FOR DIDDERENT DIFFERENT RANGES
+AND FINALLY U NEED PROTECT THE SHEET..............
+------------------------------------------------------------------------------------------------------------------------------------
+NOTES/COMMENT   GO TO REVIEW TAB AND WRITE COMMENT FOR PARTICULAR CELL
+IT COMES IN RED TRIANGLE.
+
+USING SHOW ALL NOTES WE CAN SHOW ALL NOTES
+SHIFT  + F2 IS SHORTCUT FOR WRITING NOTES/COMMENTS
+
+--------------------------------------------------------------------------------------------------------------------------------
+SUBTOTAL 
+IF WE WANT TO GET SUBTOTAL OF DIFFERENT DEPARTMENTS
+WE WILL GO FOR SUBTOTAL DEP WISE AND COLUMN SHOULD BE NUMERICAL(SALARY) 
+AND BEFORE THAT WE NEED T0 ARRANGE IN ASCDNDING OR DES ORDER
+
+WE WILL GET THREE LEVELS DATA   
+THEN WE CAN REMOVE OUTLINE AND BRING BACK OUTLINE
+-------------------------------------------------------------------------------------------------------------------------------
+SUBTOTAL FUNCTION
+SUPPOSE WE WANT TO HAVE SUM OF VISIBLE DATA ONLY THEN
+SUBTOTAL(109, RANGE)
+109 IS SUM FOR VISIBLE DATA ONLY
+
+-------------------------------------------------------------------------------------------
+HIDING ROWS CTRL + 9
+UNHIDING ROWS CTRL + SHIFT + 9
+---------------------------------------------------------------------------------------------------------
+
+3 d  referencing
+if want to do repetitive work on same sheet . lets u have 5 sheets just go to first sheet and select all sheets.
+
+
+consolidation
+if the data is at different sheets and if u want output at different output on different based on those sheets
+then u can go for consolidation
+just keep on adding the source and finally the link the data with source so that u can get reflected changes there,
+
+we can keep the data in different workbooks and consolidate them on different workbook.
+-------------------------------------------------------------------------------------------------------------------------
+PMT
+PPMT
+IPMT
+RATE
+FV
+PV
+NPER
+THESE R THE FINANCIAL FUNCTIONS
+----------------------------------------------------------------------------------------------------------------------
+TABLES
+------
+CONVERTING RANGE TO TABLE CTRL+ T OR INSERT TABLE
+TABLE IS DYNAMIC IN NATURE WE CAN RESIZE THE TABLE, WE CAN PERFORM ALL MIN,MAX, ......
+JUST WE NEED TO CHECK TOTAL ROW OPTION
+
+HOW TO RECOGNISE WHETHER IT IS TABLE OR RANGE.. WHEN TABLE DESIGN TAB APPEARS WE CAN SAY IT IS TABLE
+U CAN CONVERT TABLE BACK TO RANGE BY CLICKING ON CONVERT TO RANGE
+----------------------------------------------------------------------------------------------------------
+
+PIVOT TABLE
+CLICK ON TABLE AN THEN INSERT PIVOT TABLE AND INTP NEW SHEET , THEN SUMMARIZE DATA AS PER NEED
+DEFER LAYOUT > IF WE DO NOT WANT LIVE PREVIEW THEN WE WILL GO DEFER LAYOUT..
+
+* calculated field and calculated item is disabled in my computer
+
+PIVOT CHART 
+============
+WE CAN MAKE PIVOT CHART THROUGH PIVOT TABLE.
+SELECT THE PIVOT TABLE DATA AND GO PIVOT TABLE ANALYSE AND CLICK ON THE CHART..
+WE CAN REFRESH THE PIVOT TABLE AND PIVOT CHART. IT CHANGES WITH SOURCE DATA.
+BY DOUBLE CLICKING ON THE PIVOT TABLE WE WILL GET ALL THE DETAILS HOW DATA CAME.
+
+
+WE CAN ADD RANK USING SHOW VALUE AS THEN ..SMALLEST TO LARGEST
+------------------------------------------------------------------------------------------
+SLICER
+SELECT THE PIVOT TABLE AND GO TO PIVOT TABLE ANALYSE AND SELECT SLICER IN FILTER GROUP..
+
+TIMELINE WORKS ON TIME DATA....
+
+
+---------------------------------------------------------------------------------------------------------------
+DASHBOARD CREATION
+HIDE ALL FIELD BUTTONS ON CHART...
+STEP1> SELECT THE DATA IN THE FORM OF RANGE OR TABLE , THEN CREATE A PIVOT TABLE AND MAKE CHART
+STEP 2> CREATE A COPY BY RIGHT CLICKING ON THAT TAB AND TICK COPY...THAT WILL CREATE A COPY
+STEP 3>CREATE DIFFERENT CHARTS UUSING PIVOT TABLE.
+STEP 4> GIVE SLICER WHEREVER REQUIRED
+STEP 5> IF U GIVE TIMELINE THEN REMOVE HEADER,SELECTION LEVEL,TIME LEVEL
+STEP 5> REMOVE TIMELINE CAPTION
+STEP 6> RIGHT CLICK ON SLICER ON YOUR DASHBOARD PAGE AND REPORT CONNECTION 
+SO THAT IT IS APPLICABLE ON EACH OF PIVOT TABLE
+STEP 7> REPORT CONNECTION ON TIMELINE AS WELL AND SELECT ALL THE PIVOT TABLE PAGES.
+STEP8> CUT AND PASTE ALL THE ITEMS ON DASHBOARD PAGE
+STEP 9> HIDE ALL THE PIVOT TABLE SHEET 
+-----------------------------------------------------------------------------------------------------------
+      power pivot
+----------------------
+power pivot (data modelling)
+if data is at different worksheets or at different workbooks then how we will make pivot table,
+for that we will use power pivot.
+step1> go to power pivot
+step2> click on manage then new window will open
+step 3>get data from other sources (ie from excel)
+step 4> go to diagram view connect primary key with foreign key
+step 4> go to data view
+step 4> go to pivot table on new worksheet/or on same worksheet
+step 5> take data from both the tables
+
+----------------------------------------------------------------------------------------------------------------------------
+POWER QUERY(ETA TOOL EXTRACT TRANSFORM AND LOAD)
+4 PHASES OF POWER QUERY
+1> CONNECT
+2>TRANSFORM
+3>COMBINE 
+4>LOAD
+
+GO TO DATA TAB
+THEN GET DATA FROM WEB/ OR ANY OTHER RESOURCES....
+THEN TRANSFORM DATA THEN POWER QUERY EDITOR WILL POP UP
+>> POWER QUERY EDITOR WILL HELP U TRANSFORM THE DATA....
+SUPPOSE U WANT TO CAPITALIZE ALL DATA IN PARTICULAR COLS THEN GO TRANFORM, FORMAT THEN UPPERCASE
+
+CREATING INDEX COL BY ADD COLUMN AND THEN MOVE TO BEGINNING
+REMOVING ROWS>> GO TO HOME AND REMOVE ROWS..
+
+we have query tab we can edit the query and make changes and apply
+we can refresh the data going to the table design
+
+we can create a custom column using all the columns
+
+power query using table/range
+we can load the load to power query from table and do transformation
+
+we can create a custom column using two columns 
+we can add a column using one column and using mathematical operations
+
+we can give auto fresh by going to the properties  , we can give the timings over there
+-------------------------------------------------------------------------------------------------
+append query
+load the excel sheet
+go to home append query as new
+load and apply, delete the extra sheets
+if u will do any changes in the sources , changes will reflect in appended one..
+we can load the data from sql server as well...(giving username and password)
+
+----------------------------------------------------------------------------------------------------------------
+merge query
+go to data tab get data from source/excel
+select the multiple tables n load
+transform and do the transformation as per req
+close n load
+thats it
+========================================================================
+charts in excel
+select the data go to insert , then select small arrow towards downwards
+go to chart design and from there u can do changes
+we can give trendline on the chart
+double click on vacant space on chart area and do formatting
+
+pie chart>> through angle of explosion make slicing inside pie chart
+combo chart
+column chart
+3D column chart
+SUBCATEGORY CHART(clustered column chart)
+Funnel chart)
+waterfall chart> waterfall chart allows u to see the changes betwen starting and ending point
+we can show the cummulative effect of postive and negative effect of  amountsb based on starting value.
+HISTOGRAM
+LINECHART
+SCATTERED CHART
+BUBBLE CHART
+GRANT CHART FOR PROJECT MANAGEMENT
+
+===================================================================
+MACROS
+
+GO TO DEVELOPER TAB , VIEW TAB , MACROS AND RECORD MACROS
+ENABLE THE MACROS
+start recording   ....do all the steps and give name for your macro and give shortcut
+stop recording
+
+Go to developer
+go to insert , then insert button ...so that by clicking it macro will work
+GO TO INSERT GIVE SHAPES AND ASSIGN MACRO
+
+ADDING MACROS TO QUICKE ACESS TOOLBAR
+CLICK ON RIGHT SIDE OF QAT THEN MORE COMMANDS> THEN AMACROS ADD MACROS.
+
+RELATIVE REFERENCING WILL CAPTURE ACTIVE CELL, SO IT WILL STart from there
+
+customise ribbon add tab , add all macros there
+
+------------------------------------------------------------------------------------------------------
+VBA PROGRAMMING
+GO TO VBA THEN INSERT THEN EDITOR WILL COME , U CAN WRITE PROGRAM OVER THERE
+ALL VBA PROGRAM STARTS WITH SUB END END WITH SUB
+SUB PRG1()
+MSGBOX "WELCOME TO VBA PROGRAMMING"
+END SUB
+---------------------------------------------------------------------------
+
+
+Sub PRG2()
+ MsgBox "Welcome to vba programming", vbCritical
+ MsgBox "Welcome to vba programming", vbExclamation
+ MsgBox "Welcome to vba programming", vbInformation
+ MsgBox "Welcome to vba programming", vbQuestion
+ 
+
+End Sub
+-----------------------------------------------------------------------------------
+
+Sub PRG3()
+ MsgBox "Welcome to vba programming", vbCritical + vbAbortRetryIgnore
+ MsgBox "Welcome to vba programming", vbExclamation + vbRetryCancel
+ MsgBox "Welcome to vba programming", vbInformation + vbOKCancel
+ MsgBox "Welcome to vba programming", vbQuestion + vbYesNo
+MsgBox "Welcome to vba programming", vbQuestion + vbOKOnly
+---------------------------------------------------------------------------------------------------------------
+Sub prog4()
+Dim age As Integer
+InputBox "Enter your age"
+If age >= 18 Then
+MsgBox "u r eligible to vote"
+Else: MsgBox " u r not eligible to vote"
+End If
+
+End Sub
+----------------------------------------------------------------------------------------
+Sub prog5()
+Dim age As Integer
+age = Range("A1").Value
+If age >= 18 Then
+MsgBox "u r eligible to vote"
+Else: MsgBox " u r not eligible to vote"
+End If
+
+End Sub
+--------------------------------------------------------------------------------------
+End Sub
+
+Sub prog6()
+Dim age As Integer
+age = Range("A1").Value
+If age >= 18 Then
+Range("B1").Value = "ELIGIBLE TO VOTE"
+Else: Range("B1").Value = "NOT ELIGIBLE TO VOTE"
+End If
+
+End Sub
+
+Sub prog7()
+Dim number As Integer
+number = InputBox("enter number")
+If number > 0 Then
+MsgBox "positive"
+ElseIf number < 0 Then
+MsgBox "negative"
+Else: MsgBox "zero"
+End If
+End Sub
+-----------------------------------------------------------------------------
+Sub prog8()
+Dim number As Integer
+number = InputBox("enter number")
+Select Case number
+Case Is > 0
+MsgBox "positive"
+Case Is < 0
+MsgBox "negative"
+Case Is = 0
+MsgBox "Zero"
+End Select
+
+End Sub
+---------------------------------------------------------------------------------------
+Sub prog8()
+Dim number As Integer
+number = InputBox("enter number")
+Select Case number
+Case Is > 0
+MsgBox "positive"
+Case Is < 0
+MsgBox "negative"
+Case Is = 0
+MsgBox "Zero"
+End Select
+
+-----------------------------------------------
+Sub prog9()
+Dim marks As Long
+marks = InputBox("enter number")
+Select Case marks
+Case 80 To 100
+MsgBox "Excellent"
+Case 60 To 80
+MsgBox "Good"
+Case 40 To 60
+MsgBox "poor"
+Case Is < 40
+MsgBox "fail"
+End Select
+
+End Sub
+--------------------------------------------------------------------
+creating function using vba
+
+Sub fun_demo()
+
+End Sub
+Function Even_Odd(num As Integer) As String
+If num Mod 2 = 0 Then
+Even_Odd = "Even number"
+Else
+Even_Odd = "Odd number"
+End If
+End Function
+-----------------------------------------------------------------------------------------------
+
+Sub prog10()
+Dim number As Integer
+For number = 1 To 10
+MsgBox "hello"
+Next
+
+End Sub
+
+Sub prog11()
+Dim number As Integer
+For number = 1 To 10
+MsgBox number
+Next
+
+End Sub
+
+Sub prog12()
+Dim number As Integer
+For number = 1 To 10
+MsgBox "number is" & number
+Next
+
+End Sub
+-----------------------------------------------------------------------
+Sub prog13()
+Dim number As Integer
+For number = 10 To 1 Step -2
+MsgBox "number is" & number
+Next
+
+End Sub
+
+Sub prog14()
+Dim number As Integer
+For number = 1 To 10 Step 2
+MsgBox "number is" & number
+Next
+
+End Sub
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
